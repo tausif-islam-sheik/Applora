@@ -5,7 +5,9 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Home from "./Home";
 import Root from "./Root";
-import NotFound from "./NotFound";
+import NotFound from "./PageNotFound";
+import axios from "axios";
+import Apps from "./Apps";
 
 const router = createBrowserRouter([
   {
@@ -15,10 +17,14 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+        loader: async () => {
+          const res = await axios.get("/apps.json");
+          return res.data;
+        },
       },
       {
         path: "apps",
-        Component: Home,
+        Component: Apps,
       },
       {
         path: "installation",

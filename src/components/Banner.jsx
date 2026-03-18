@@ -4,7 +4,7 @@ import appStoreIcon from "../assets/app-store.png";
 
 const Banner = () => {
   return (
-    <section className="bg-gray-100 pt-16 pb-32 relative overflow-hidden">
+    <section className="pt-16 pb-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-slate-800 leading-tight">
           We Build

@@ -1,6 +1,6 @@
 import notFoundPage from "./assets/error-404.png";
 
-const NotFound = () => {
+const PageNotFound = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4 text-center">
       <img
@@ -30,4 +30,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default PageNotFound;
