@@ -4,9 +4,9 @@ import logo from "../../assets/logo.png";
 const Navbar = () => {
   const navLinks = (
     <>
-      <NavLink>Home</NavLink>
-      <NavLink>Apps</NavLink>
-      <NavLink>Installation</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
+      <NavLink to={"/apps"}>Apps</NavLink>
+      <NavLink to={"/installation"}>Installation</NavLink>
     </>
   );
 
@@ -38,8 +38,8 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link className="btn btn-ghost text-xl">
-          <img className="w-10" src={logo} alt="" />
+        <Link to={"/"} className="flex items-center gap-1 md:text-xl">
+          <img className="w-7 md:w-10" src={logo} alt="" />
           <span className="uppercase font-bold text-[#8047EA]">Applora</span>
         </Link>
       </div>
@@ -52,8 +52,8 @@ const Navbar = () => {
         <button class="btn bg-gradient-to-r from-[#8047EA] to-[#9F62F2] text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
