@@ -1,18 +1,42 @@
-import { useLoaderData, Link } from "react-router";
+import { useLoaderData, useParams, Navigate } from "react-router";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import reviewIcon from "./assets/review-icon.png";
+import { addToStoredDB } from "./utils/localstorage";
+import appNotFound from "./assets/App-Error.png";
 
 const AppDetails = () => {
   const app = useLoaderData();
+  const { id } = useParams();
 
   if (!app) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="card bg-base-100 shadow p-8 text-center">
-          <h1 className="text-2xl font-bold text-error">App Not Found</h1>
-          <Link to="/" className="btn btn-primary mt-4">
-            Back Home
-          </Link>
+      <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+        <div className="text-center max-w-xl">
+          <div className="flex justify-center mb-6">
+            <img src={appNotFound} alt="Not Found" className="w-64" />
+          </div>
+
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold text-base-content">
+            OPPS!! APP NOT FOUND
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-gray-500 mt-3">
+            The App you are requesting is not found on our system. please try
+            another apps
+          </p>
+
+          {/* Button */}
+          <button
+            onClick={() => window.history.back()}
+            className="px-6 py-2 rounded-md font-medium text-white 
+             bg-gradient-to-r from-purple-500 to-indigo-500 
+             hover:from-purple-600 hover:to-indigo-600 
+             transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer mt-5"
+          >
+            Go Back!
+          </button>
         </div>
       </div>
     );
@@ -30,11 +54,35 @@ const AppDetails = () => {
     companyName,
   } = app;
 
-  // Fake rating distribution (you can replace with real data)
   const ratingData = ratings.map((rating) => rating);
+
+  const handleInstallNow = (id) => {
+    addToStoredDB(id);
+  };
 
   return (
     <div className="max-w-7xl mx-auto p-4 space-y-8">
+      <button
+        onClick={() => window.history.back()}
+        className="px-6 py-2 rounded-md font-medium text-purple-600 border border-gray-300 cursor-pointer flex gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-move-left-icon lucide-move-left"
+        >
+          <path d="M6 8L2 12L6 16" />
+          <path d="M2 12H22" />
+        </svg>
+        Go Back
+      </button>
       {/* Top Section */}
       <div className="card bg-base-100 shadow p-6 flex flex-col md:flex-row gap-6">
         {/* App Image */}
@@ -78,7 +126,6 @@ const AppDetails = () => {
                 }).format(downloads)}
               </p>
             </div>
-
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +155,6 @@ const AppDetails = () => {
                 }).format(ratingAvg)}
               </p>
             </div>
-
             <div>
               <img className="w-10 h-10" src={reviewIcon} alt="" />
               <p className="text-sm font-semibold text-gray-500">
@@ -123,7 +169,10 @@ const AppDetails = () => {
           </div>
 
           {/* Button */}
-          <button className="btn bg-green-600 mt-4 text-white">
+          <button
+            onClick={() => handleInstallNow(id)}
+            className="btn bg-green-600 mt-4 text-white"
+          >
             Install Now ({size} MB)
           </button>
         </div>

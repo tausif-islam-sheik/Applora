@@ -35,13 +35,17 @@ const router = createBrowserRouter([
       {
         path: "installation",
         Component: Installation,
+        loader: async () => {
+          const res = await axios.get("/apps.json");
+          return res.data;
+        },
       },
       {
         path: "/app-details/:id",
         Component: AppDetails,
-        loader: async ({params}) => {
+        loader: async ({ params }) => {
           const res = await axios.get("/apps.json");
-          const apps = res.data.find(app => app.id === Number(params.id))
+          const apps = res.data.find((app) => app.id === Number(params.id));
           return apps;
         },
       },
