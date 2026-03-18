@@ -1,7 +1,7 @@
 const AppCard = ({ appData }) => {
   const { image, title, downloads, ratingAvg } = appData;
   return (
-    <div class="card bg-base-100 shadow-md rounded-xl">
+    <div class="card bg-base-100 shadow-md rounded-xl cursor-pointer">
       <div class="p-3">
         <img class="rounded-lg h-52 w-full object-cover" src={image} />
       </div>
