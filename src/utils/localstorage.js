@@ -7,6 +7,9 @@
 //   }
 // };
 
+import { Bounce } from "react-toastify";
+import { toast } from "react-toastify";
+
 // const saveApps = (key, apps) => {
 //   localStorage.setItem(key, JSON.stringify(apps));
 // };
@@ -52,7 +55,17 @@ const getStoredApp = () => {
 const addToStoredDB = (id) => {
   const storedAppData = getStoredApp();
   if (storedAppData.includes(id)) {
-    alert("Already exists");
+    toast.warn("Already exists!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   } else {
     storedAppData.push(id);
     const data = JSON.stringify(storedAppData);

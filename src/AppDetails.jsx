@@ -3,8 +3,11 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import reviewIcon from "./assets/review-icon.png";
 import { addToStoredDB } from "./utils/localstorage";
 import appNotFound from "./assets/App-Error.png";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const AppDetails = () => {
+  const [installed, setInstalled] = useState(false);
   const app = useLoaderData();
   const { id } = useParams();
 
@@ -57,6 +60,28 @@ const AppDetails = () => {
   const ratingData = ratings.map((rating) => rating);
 
   const handleInstallNow = (id) => {
+    setInstalled(true);
+    let timerInterval;
+    Swal.fire({
+      title: `${title} downloading...`,
+      html: "I will close in <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const timer = Swal.getPopup().querySelector("b");
+        timerInterval = setInterval(() => {
+          timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 1000);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
     addToStoredDB(id);
   };
 
@@ -171,9 +196,12 @@ const AppDetails = () => {
           {/* Button */}
           <button
             onClick={() => handleInstallNow(id)}
-            className="btn bg-green-600 mt-4 text-white"
+            disabled={installed}
+            className={`btn mt-4 ${
+              installed ? "bg-green-600 text-white cursor-not-allowed" : "bg-green-600 text-white"
+            }`}
           >
-            Install Now ({size} MB)
+            {installed ? "Installed" : `Install Now (${size} MB)`}
           </button>
         </div>
       </div>
