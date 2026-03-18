@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
         <Link to={"/"} className="flex items-center gap-1 md:text-xl">
           <img className="w-7 md:w-10" src={logo} alt="" />
-          <span className="uppercase font-bold text-[#8047EA]">Applora</span>
+          <span className="uppercase font-bold bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Applora</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

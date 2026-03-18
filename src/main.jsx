@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Home from "./Home";
 import Root from "./Root";
+import NotFound from "./NotFound";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "installation",
         Component: Home,
+      },
+      {
+        path: "*",
+        Component: NotFound,
       },
     ],
   },
