@@ -47,7 +47,7 @@ const Apps = () => {
         </div>
 
         {/* All Apps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 max-w-7xl md:mx-auto mx-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 max-w-7xl md:mx-auto mx-5">
           {appsData.map((appData) => (
             <AppCard key={appData.id} appData={appData} />
           ))}

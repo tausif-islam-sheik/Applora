@@ -8,6 +8,8 @@ import Root from "./Root";
 import NotFound from "./PageNotFound";
 import axios from "axios";
 import Apps from "./Apps";
+import Installation from "./Installation";
+import AppDetails from "./AppDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +34,16 @@ const router = createBrowserRouter([
       },
       {
         path: "installation",
-        Component: Home,
+        Component: Installation,
+      },
+      {
+        path: "/app-details/:id",
+        Component: AppDetails,
+        loader: async ({params}) => {
+          const res = await axios.get("/apps.json");
+          const apps = res.data.find(app => app.id === Number(params.id))
+          return apps;
+        },
       },
       {
         path: "*",
