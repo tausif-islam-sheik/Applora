@@ -14,6 +14,23 @@ const Installation = () => {
     );
     setInstalledApps(installedAppsData);
   }, []);
+
+  const handleSort = (type) => {
+    if (type === "highToLow") {
+      const sortedByHighToLow = [...installedApps].sort(
+        (a, b) => b.downloads - a.downloads,
+      );
+      setInstalledApps(sortedByHighToLow);
+    }
+
+    if (type === "lowToHigh") {
+      const sortedByHighToLow = [...installedApps].sort(
+        (a, b) => a.downloads - b.downloads,
+      );
+      setInstalledApps(sortedByHighToLow);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-base-200 p-8">
       <button
@@ -48,10 +65,10 @@ const Installation = () => {
       {/* Top bar */}
       <div className="flex justify-between items-center mb-4">
         <p className="font-semibold">{installedApps.length} Apps Found</p>
-        <select className="select select-bordered w-40">
-          <option>Sort By Size</option>
-          <option>Name</option>
-          <option>Rating</option>
+        <select className="select select-bordered w-44 text-gray-500 font-semibold">
+          <option>Sort By Downloads</option>
+          <option onClick={() => handleSort("highToLow")}>High-Low</option>
+          <option onClick={() => handleSort("lowToHigh")}>Low-High</option>
         </select>
       </div>
 
