@@ -1,5 +1,5 @@
-import Banner from './components/Banner'
-import TrendingApps from './components/TrendingApps'
+import Banner from '../components/Banner'
+import TrendingApps from '../components/TrendingApps'
 
 const Home = () => {
   return (

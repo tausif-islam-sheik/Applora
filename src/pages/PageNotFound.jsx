@@ -1,4 +1,4 @@
-import notFoundPage from "./assets/error-404.png";
+import notFoundPage from "../assets/error-404.png";
 
 const PageNotFound = () => {
   return (

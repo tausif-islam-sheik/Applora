@@ -1,6 +1,7 @@
 import bannerImg from "../assets/hero.png";
 import googlePlayIcon from "../assets/google-play.png";
 import appStoreIcon from "../assets/app-store.png";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -22,15 +23,18 @@ const Banner = () => {
         </p>
 
         <div className="flex justify-center gap-4 mt-8 flex-wrap">
-          <button className="flex items-center gap-2 px-6 py-3 border rounded-lg border-gray-300 shadow-sm hover:shadow-md transition cursor-pointer">
-            <img src={googlePlayIcon} className="w-5" alt="Google Play" />
-            <span className="font-medium">Google Play</span>
-          </button>
-
-          <button className="flex items-center gap-2 px-6 py-3 border rounded-lg border-gray-300 shadow-sm hover:shadow-md transition cursor-pointer">
-            <img src={appStoreIcon} className="w-5" alt="App Store" />
-            <span className="font-medium">App Store</span>
-          </button>
+          <Link to={"https://play.google.com/store/games?hl=en"}>
+            <button className="flex items-center gap-2 px-6 py-3 border rounded-lg border-gray-300 shadow-sm hover:shadow-md transition cursor-pointer">
+              <img src={googlePlayIcon} className="w-5" alt="Google Play" />
+              <span className="font-medium">Google Play</span>
+            </button>
+          </Link>
+          <Link to={"https://apps.apple.com/us/iphone/today"}>
+            <button className="flex items-center gap-2 px-6 py-3 border rounded-lg border-gray-300 shadow-sm hover:shadow-md transition cursor-pointer">
+              <img src={appStoreIcon} className="w-5" alt="App Store" />
+              <span className="font-medium">App Store</span>
+            </button>
+          </Link>
         </div>
 
         <div className="mt-20 flex justify-center">

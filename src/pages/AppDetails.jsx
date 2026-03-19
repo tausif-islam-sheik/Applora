@@ -1,8 +1,8 @@
 import { useLoaderData, useParams, Navigate } from "react-router";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
-import reviewIcon from "./assets/review-icon.png";
-import { addToStoredDB } from "./utils/localstorage";
-import appNotFound from "./assets/App-Error.png";
+import reviewIcon from "../assets/review-icon.png";
+import { addToStoredDB } from "../utils/localstorage";
+import appNotFound from "../assets/App-Error.png";
 import Swal from "sweetalert2";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router";
-import AppCard from "./components/AppCard";
+import AppCard from "../components/AppCard";
 import { useState } from "react";
-import appNotFound from "./assets/App-Error.png";
+import appNotFound from "../assets/App-Error.png";
 
 const Apps = () => {
   const appsData = useLoaderData();
@@ -26,7 +26,7 @@ const Apps = () => {
         <div className="mt-6 px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           {/* Left: App Count */}
           <div className="text-xl font-semibold text-gray-800">
-            ({appsData.length}) Apps Found
+            ({filteredApps.length}) Apps Found
           </div>
 
           {/* Right: Search */}

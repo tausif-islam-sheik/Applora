@@ -3,13 +3,13 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Home from "./Home";
 import Root from "./Root";
-import NotFound from "./PageNotFound";
 import axios from "axios";
-import Apps from "./Apps";
-import Installation from "./Installation";
-import AppDetails from "./AppDetails";
+import Apps from "./pages/Apps";
+import Installation from "./pages/Installation";
+import AppDetails from "./pages/AppDetails";
+import Home from "./pages/Home";
+import PageNotFound from "./pages/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        Component: NotFound,
+        Component: PageNotFound,
       },
     ],
   },
