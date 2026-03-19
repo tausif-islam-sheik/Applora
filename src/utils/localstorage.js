@@ -42,4 +42,8 @@ const removeStoredApp = (id) => {
   localStorage.setItem("installedApps", JSON.stringify(updatedApps));
 };
 
-export { addToStoredDB, getStoredApp, removeStoredApp };
+const isApp = (id) => {
+  return getStoredApp().includes(id);
+};
+
+export { addToStoredDB, getStoredApp, removeStoredApp, isApp };

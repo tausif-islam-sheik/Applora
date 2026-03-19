@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const AppCard = ({ appData }) => {
   const { id, image, title, downloads, ratingAvg } = appData;
   return (
-    <Link to={`/app-details/${id}`}>
+    <Link to={`/apps/${id}`}>
       <div className="card bg-base-100 shadow-md rounded-xl cursor-pointer">
         <div className="p-3">
           <img className="rounded-lg h-52 w-full object-cover" src={image} />

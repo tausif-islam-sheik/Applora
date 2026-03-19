@@ -1,15 +1,22 @@
 import { useLoaderData, useParams, Navigate } from "react-router";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import reviewIcon from "../assets/review-icon.png";
-import { addToStoredDB } from "../utils/localstorage";
+import { addToStoredDB, isApp } from "../utils/localstorage";
 import appNotFound from "../assets/App-Error.png";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const AppDetails = () => {
   const [installed, setInstalled] = useState(false);
   const app = useLoaderData();
   const { id } = useParams();
+
+  useEffect(() => {
+    if (id && isApp(id)) {
+      setInstalled(true);
+    }
+  }, [id]);
 
   if (!app) {
     return (
@@ -63,7 +70,7 @@ const AppDetails = () => {
     setInstalled(true);
     let timerInterval;
     Swal.fire({
-      title: `${title} downloading...`,
+      title: `${title} installing...`,
       html: "I will close in <b></b> milliseconds.",
       timer: 2000,
       timerProgressBar: true,
@@ -198,7 +205,9 @@ const AppDetails = () => {
             onClick={() => handleInstallNow(id)}
             disabled={installed}
             className={`btn mt-4 ${
-              installed ? "bg-green-600 text-white cursor-not-allowed" : "bg-green-600 text-white"
+              installed
+                ? "bg-green-600 text-white cursor-not-allowed"
+                : "bg-green-600 text-white"
             }`}
           >
             {installed ? "Installed" : `Install Now (${size} MB)`}
